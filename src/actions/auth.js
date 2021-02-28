@@ -1,4 +1,5 @@
 import { SIGN_IN, BASE_API_URL } from '../utils/constants';
+import { getErrors } from './errors.js';
 import axios from 'axios';
 
 export const signIn = (user) => ({
@@ -18,6 +19,7 @@ export const initiateLogin = (email, password) => {
       dispatch(signIn(user));
     } catch (error) {
       console.log('error');
+      error.response && dispatch(getErrors(error.response.data));
     }
   };
 };
@@ -29,6 +31,7 @@ export const registerNewUser = (data) => {
       return { success: true };
     } catch (error) {
       console.log('error', error);
+      error.response && dispatch(getErrors(error.response.data));
       return { success: false };
     }
   };
