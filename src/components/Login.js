@@ -58,42 +58,57 @@ class Login extends React.Component {
   render() {
     const { errorMsg } = this.state;
     return (
-      <div className="login-page">
-        <h1>Lifestyle Store</h1>
-        <div className="login-form">
-          <Form onSubmit={this.handleLogin}>
-            {errorMsg && errorMsg.signin_error && (
-              <p className="errorMsg centered-message">
-                {errorMsg.signin_error}
-              </p>
-            )}
-            <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                placeholder="Enter email"
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                placeholder="Enter password"
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-            <div className="action-items">
-              <Button variant="primary" type="submit">
-                Login
-              </Button>
-              <Link to="/register" className="btn btn-secondary">
-                Create account
-              </Link>
+      <div className="hero is fullheight is-primary">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <div className="column is-8 is-offset-2">
+              <h3 className="title has-text-white">Lifestyle Store</h3>
+              <hr className="login-hr"/>
+              <p className="subtitle has-text-white">Please login to change your lifestyle!</p>
+              <div className="box">
+                <div className="box">
+                  <img src="logo192.png" alt="logo"/>
+                  {errorMsg && errorMsg.signin_error && (
+                    <p className="errorMsg centered-message">
+                      {errorMsg.signin_error}
+                    </p>
+                  )}
+                  <Form onSubmit={this.handleLogin}>
+                    <div className="field">
+                      <div className="control">
+                        <Form.Group controlId="email">
+                          {/* <Form.Label>Email address</Form.Label> */}
+                          <Form.Control
+                            type="email"
+                            name="email"
+                            placeholder="Enter email"
+                            onChange={this.handleInputChange}
+                          />
+                        </Form.Group>
+                        <Form.Group controlId="password">
+                          {/* <Form.Label>Password</Form.Label> */}
+                          <Form.Control
+                            type="password"
+                            name="password"
+                            placeholder="Enter password"
+                            onChange={this.handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+                    </div>
+                    <div className="action-items">
+                      <Button className="button is-block is-danger is-large" variant="primary" type="submit">
+                        Login
+                      </Button>
+                      <Link to="/register" className="btn btn-secondary">
+                        Create account
+                      </Link>
+                    </div>
+                  </Form>
+                </div>
+              </div>
             </div>
-          </Form>
+          </div>
         </div>
       </div>
     );
